@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: lost-found-system
+    runtime: java
+    buildCommand: javac WebServer.java
+    startCommand: java WebServer
