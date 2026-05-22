@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lost &amp; Found System</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>Lost &amp; Found System</h1>
+      <p class="subtitle">Report found items or claim what you lost</p>
+    </header>
+
+    <!-- Home -->
+    <section id="view-home" class="view active">
+      <div class="role-cards">
+        <button class="role-card" data-view="finder">
+          <strong>Finder</strong>
+          <span>Add and list found items</span>
+        </button>
+        <button class="role-card" data-view="claimant">
+          <strong>Claimant</strong>
+          <span>Search and claim your item</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Finder -->
+    <section id="view-finder" class="view">
+      <div class="view-head">
+        <button class="btn-back" data-view="home">&larr; Back</button>
+        <h2>Finder Menu</h2>
+      </div>
+
+      <form id="add-form" class="card form-grid">
+        <label>Item Name<input type="text" name="name" required></label>
+        <label>Category<input type="text" name="category" required></label>
+        <label>Location<input type="text" name="location" required></label>
+        <label>Date Found<input type="text" name="date" placeholder="e.g. 2026-05-20" required></label>
+        <label>Description<input type="text" name="description" required></label>
+        <button type="submit" class="btn primary">Add Item</button>
+      </form>
+
+      <div class="card">
+        <div class="table-head">
+          <h3>All Items</h3>
+          <button id="refresh-items" class="btn secondary">Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="items-tbody"></tbody>
+          </table>
+        </div>
+        <p id="items-empty" class="muted hidden">No items yet.</p>
+      </div>
+    </section>
+
+    <!-- Claimant -->
+    <section id="view-claimant" class="view">
+      <div class="view-head">
+        <button class="btn-back" data-view="home">&larr; Back</button>
+        <h2>Claimant Menu</h2>
+      </div>
+
+      <div class="card">
+        <h3>Search by Name</h3>
+        <form id="search-form" class="inline-form">
+          <input type="text" name="name" placeholder="Enter item name" required>
+          <button type="submit" class="btn primary">Search</button>
+        </form>
+        <div id="search-results" class="results"></div>
+      </div>
+
+      <div class="card">
+        <h3>Claim Item</h3>
+        <form id="claim-form" class="form-grid">
+          <label>Item ID<input type="number" name="id" min="1" required></label>
+          <label>Verify Description<input type="text" name="verifyDescription" placeholder="Use words from the posted description" required></label>
+          <label>Date of Lost Item<input type="text" name="dateInput" placeholder="Must match found date" required></label>
+          <button type="submit" class="btn primary">Claim Item</button>
+        </form>
+      </div>
+    </section>
+
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
